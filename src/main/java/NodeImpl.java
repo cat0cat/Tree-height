@@ -13,7 +13,9 @@ public class NodeImpl implements Node {
     }
     @Override
     public int height() {
-        return 0; // TODO
+        int leftHeight = (left == null) ? 0 : left.height();
+        int rightHeight = (right == null) ? 0 : right.height();
+        return 1 + Math.max(leftHeight, rightHeight);
     }
 
     /**
