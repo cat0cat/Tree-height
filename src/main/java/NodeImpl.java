@@ -13,9 +13,8 @@ public class NodeImpl implements Node {
     }
     @Override
     public int height() {
-        int leftHeight = (left == null) ? 0 : left.height();
-        int rightHeight = (right == null) ? 0 : right.height();
-        return 1 + Math.max(leftHeight, rightHeight);
+        return (getChildren().map(Node::height).max(Integer::compare).map(x -> x + 1).isPresent()) ?
+                getChildren().map(Node::height).max(Integer::compare).map(x -> x + 1).get() : 1;
     }
 
     /**
