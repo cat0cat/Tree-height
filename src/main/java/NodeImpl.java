@@ -13,8 +13,7 @@ public class NodeImpl implements Node {
     }
     @Override
     public int height() {
-        return (getChildren().map(Node::height).max(Integer::compare).map(x -> x + 1).isPresent()) ?
-                getChildren().map(Node::height).max(Integer::compare).map(x -> x + 1).get() : 1;
+        return getChildren().map(Node::height).max(Integer::compare).map(x -> x + 1).orElse(1);
     }
 
     /**
